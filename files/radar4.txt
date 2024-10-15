@@ -1,0 +1,9 @@
+#NWTiS 2024.
+#Thu Mar 07 10:23:41 CET 2024
+id=4
+max=23
+maxDuration=7
+maxDistance=70
+radarAddress=Anina 14, 42000 Varaždin
+gpsWidth=46.30465
+gpsLength=16.34145
