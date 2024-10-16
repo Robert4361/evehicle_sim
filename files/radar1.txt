@@ -1,9 +1,7 @@
-#NWTiS 2024.
-#Thu Mar 07 10:23:41 CET 2024
 id=1
-maxSpeed=15
-maxDuration=7
-maxDistance=1000
-radarAddress=Jalkovecka 52, 42000 Varazdin
-gpsWidth=46.29950
-gpsLength=16.33001
+max_speed=15
+max_duration=7
+max_distance=1000
+radar_address=Jalkovecka 52, 42000 Varazdin
+gps_width=46.29950
+gps_length=16.33001

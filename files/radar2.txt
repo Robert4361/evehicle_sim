@@ -1,9 +1,7 @@
-#NWTiS 2024.
-#Thu Mar 07 10:23:41 CET 2024
 id=2
-maxSpeed=24
-maxDuration=10
-maxDistance=200
-radarAddress=Zagrebacka 157, 42000 Varazdin
-gpsWidth=46.28569
-gpsLength=16.34735
+max_speed=24
+max_duration=10
+max_distance=200
+radar_address=Zagrebacka 157, 42000 Varazdin
+gps_width=46.28569
+gps_length=16.34735
