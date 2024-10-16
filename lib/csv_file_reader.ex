@@ -1,3 +1,0 @@
-defmodule CsvFileReader do
-  
-end
