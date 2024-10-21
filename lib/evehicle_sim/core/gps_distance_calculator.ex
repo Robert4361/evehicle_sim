@@ -1,4 +1,4 @@
-defmodule EvehicleSim.GpsDistanceCalculator do
+defmodule EvehicleSim.Core.GpsDistanceCalculator do
   def calculate_distance_km(lat1, lon1, lat2, lon2) do
     x1 = lat1 * (:math.pi() / 180)
     y1 = lon1 * (:math.pi() / 180)

@@ -1,4 +1,4 @@
-defmodule EvehicleSim.VehicleDriveData do
+defmodule EvehicleSim.Core.VehicleDriveData do
   alias __MODULE__
 
   @type t :: %VehicleDriveData{

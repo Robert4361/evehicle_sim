@@ -1,4 +1,4 @@
-defmodule EvehicleSim.Radar do
+defmodule EvehicleSim.Core.Radar do
   alias __MODULE__
 
   @type t :: %Radar{

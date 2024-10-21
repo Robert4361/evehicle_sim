@@ -1,4 +1,4 @@
-defmodule EvehicleSim.FileReaders.TxtFileReader do
+defmodule EvehicleSim.Core.FileReaders.TxtFileReader do
   def open_file(file_name) do
     File.stream!(Path.expand("files/#{file_name}"))
     |> Enum.map(fn row ->

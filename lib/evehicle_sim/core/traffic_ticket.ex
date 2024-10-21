@@ -1,5 +1,5 @@
-defmodule EvehicleSim.TrafficTicket do
-  alias EvehicleSim.TrafficTicket
+defmodule EvehicleSim.Core.TrafficTicket do
+  alias __MODULE__
 
   @type t() :: %TrafficTicket{
           vehicle_id: integer(),

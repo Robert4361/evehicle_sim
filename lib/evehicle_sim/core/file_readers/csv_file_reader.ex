@@ -1,4 +1,4 @@
-defmodule CsvFileReader do
+defmodule EvehicleSim.Core.FileReaders.CsvFileReader do
   @type csv_header() :: [String.t()]
   @type csv_data() :: [String.t()]
 
