@@ -8,7 +8,6 @@ defmodule EvehicleSim.Runtime.Workers.RadarServer do
     radar =
       TxtFileReader.open_file(file_name)
       |> Radar.new()
-      |> IO.inspect()
 
     name = {:via, Registry, {EvehicleSim.Registry, radar.id, radar}}
 
