@@ -10,6 +10,8 @@ defmodule EvehicleSim.Application do
     children = [
       # Starts a worker by calling: EvehicleSim.Worker.start_link(arg)
       # {EvehicleSim.Worker, arg}
+      {EvehicleSim.Runtime.Supervisors.RadarSupervisor, nil},
+      {Registry, keys: :unique, name: EvehicleSim.Registry}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
