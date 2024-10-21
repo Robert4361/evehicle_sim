@@ -5,13 +5,15 @@ defmodule EvehicleSim.Runtime.Workers.RadarServer do
   alias EvehicleSim.Core.Radar
 
   def start_link(file_name) do
-    radar =
-      TxtFileReader.open_file(file_name)
-      |> Radar.new()
+    case TxtFileReader.open_file(file_name) do
+      {:ok, data} ->
+        radar = Radar.new(data)
+        name = {:via, Registry, {EvehicleSim.Registry, radar.id, radar}}
+        GenServer.start_link(__MODULE__, nil, name: name)
 
-    name = {:via, Registry, {EvehicleSim.Registry, radar.id, radar}}
-
-    GenServer.start_link(__MODULE__, nil, name: name)
+      {:error, reason} ->
+        {:error, reason}
+    end
   end
 
   @impl true
