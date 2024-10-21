@@ -24,8 +24,17 @@ defmodule EvehicleSim.Core.Radar do
   def new(radar_info) do
     fields =
       radar_info
-      |> Map.new(fn {key, value} -> {String.to_atom(key), value} end)
+      |> Map.new(fn {key, value} -> {String.to_atom(key), cast_value(key, value)} end)
 
     struct(__MODULE__, fields)
   end
+
+  defp cast_value("id", value), do: String.to_integer(value)
+  defp cast_value("max_speed", value), do: String.to_integer(value)
+  defp cast_value("max_duration", value), do: String.to_integer(value)
+  defp cast_value("max_distance", value), do: String.to_integer(value)
+  defp cast_value("gps_width", value), do: String.to_float(value)
+  defp cast_value("gps_length", value), do: String.to_float(value)
+
+  defp cast_value(_key, value), do: value
 end
