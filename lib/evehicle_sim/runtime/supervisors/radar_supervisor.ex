@@ -12,7 +12,7 @@ defmodule EvehicleSim.Runtime.Supervisors.RadarSupervisor do
   end
 
   def stop_radar(id) do
-    case Registry.lookup(EvehicleSim.Registry, id) do
+    case Registry.lookup(EvehicleSim.RadarRegistry, id) do
       [{pid, _data}] -> DynamicSupervisor.terminate_child(__MODULE__, pid)
       [] -> {:error, :not_found}
     end

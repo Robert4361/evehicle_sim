@@ -8,7 +8,7 @@ defmodule EvehicleSim.Runtime.Workers.RadarServer do
     case TxtFileReader.open_file(file_name) do
       {:ok, data} ->
         radar = Radar.new(data)
-        name = {:via, Registry, {EvehicleSim.Registry, radar.id, radar}}
+        name = {:via, Registry, {EvehicleSim.RadarRegistry, "radar_#{radar.id}", radar}}
         GenServer.start_link(__MODULE__, nil, name: name)
 
       {:error, reason} ->
