@@ -11,7 +11,8 @@ defmodule EvehicleSim.Application do
       # Starts a worker by calling: EvehicleSim.Worker.start_link(arg)
       # {EvehicleSim.Worker, arg}
       {EvehicleSim.Runtime.Supervisors.RadarSupervisor, nil},
-      {Registry, keys: :unique, name: EvehicleSim.RadarRegistry}
+      {Registry, keys: :unique, name: EvehicleSim.RadarRegistry},
+      {EvehicleSim.Runtime.Workers.VehicleIdAgent, nil}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
