@@ -66,20 +66,20 @@ defmodule EvehicleSim.Core.VehicleDriveData do
   end
 
   defp cast_value(:milliseconds_since_epoch, value), do: String.to_integer(value)
-  defp cast_value(:speed, value), do: String.to_float(value)
-  defp cast_value(:watt, value), do: String.to_float(value)
-  defp cast_value(:ampere, value), do: String.to_float(value)
-  defp cast_value(:altitude, value), do: String.to_float(value)
-  defp cast_value(:gps_speed, value), do: String.to_float(value)
+  defp cast_value(:speed, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:watt, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:ampere, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:altitude, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:gps_speed, value), do: elem(Float.parse(value), 0)
   defp cast_value(:vehicle_body_temperature, value), do: String.to_integer(value)
   defp cast_value(:battery_percentage, value), do: String.to_integer(value)
-  defp cast_value(:battery_voltage, value), do: String.to_float(value)
+  defp cast_value(:battery_voltage, value), do: elem(Float.parse(value), 0)
   defp cast_value(:battery_capacity, value), do: String.to_integer(value)
   defp cast_value(:battery_temperature, value), do: String.to_integer(value)
-  defp cast_value(:remaining_mileage, value), do: String.to_float(value)
-  defp cast_value(:total_mileage, value), do: String.to_float(value)
-  defp cast_value(:latitude, value), do: String.to_float(value)
-  defp cast_value(:longitude, value), do: String.to_float(value)
+  defp cast_value(:remaining_mileage, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:total_mileage, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:latitude, value), do: elem(Float.parse(value), 0)
+  defp cast_value(:longitude, value), do: elem(Float.parse(value), 0)
 
   defp cast_value(_, value), do: value
 end
