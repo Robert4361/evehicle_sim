@@ -24,47 +24,39 @@ defmodule EvehicleSim.Core.Vehicle do
   end
 
   @spec get_all_radars() :: [%{name: String.t(), radar: %EvehicleSim.Core.Radar{}}]
-  defp get_all_radars(),
+  def get_all_radars(),
     do:
       Registry.select(EvehicleSim.RadarRegistry, [
         {{:"$1", :_, :"$2"}, [], [%{name: :"$1", radar: :"$2"}]}
       ])
 
-  def start_simulation(%Vehicle{drive_data: drive_data} = vehicle) do
+  @spec start_drive(Vehicle.t()) :: term()
+  def start_drive(%Vehicle{drive_data: drive_data} = vehicle) do
     radars =
       get_all_radars()
-      |> get_radar_name_and_location()
 
     drive_data
-    |> Enum.each(fn %{latitude: latitude, longitude: longitude} = row ->
-      radar = get_closest_radar(radars, latitude, longitude)
+    |> Enum.each(fn %{latitude: latitude, longitude: longitude, gps_speed: speed} = row ->
+      radar = get_closest_radar(radars, latitude, longitude, speed)
 
       if radar != nil do
-        RadarServer.send_row(radar.name, {vehicle.id, row})
+        row_for_radar =
+          {vehicle.id, row.milliseconds_since_epoch, row.gps_speed, latitude, longitude}
+
+        RadarServer.send_row(radar.name, row_for_radar)
       end
     end)
   end
 
-  defp get_radar_name_and_location(radars) do
-    radars
-    |> Enum.map(fn radar ->
-      %{
-        name: radar.name,
-        gps_width: radar.radar.gps_width,
-        gps_length: radar.radar.gps_length
-      }
-    end)
-  end
-
-  defp get_closest_radar(radars, latitude, longitude) do
+  defp get_closest_radar(radars, latitude, longitude, speed) do
     radars
     |> Enum.filter(fn radar ->
       GpsDistanceCalculator.calculate_distance_m(
-        radar.gps_width,
-        radar.gps_length,
+        radar.radar.gps_width,
+        radar.radar.gps_length,
         latitude,
         longitude
-      ) <= radar.max_duration
+      ) <= radar.radar.max_distance && speed > radar.radar.max_speed
     end)
     |> List.first()
   end
