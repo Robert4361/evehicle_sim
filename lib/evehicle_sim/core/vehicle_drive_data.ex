@@ -55,7 +55,7 @@ defmodule EvehicleSim.Core.VehicleDriveData do
     :longitude
   ]
 
-  @spec new(String.t()) :: t()
+  @spec new([String.t()]) :: t()
   def new(row_data) do
     fields =
       row_data
