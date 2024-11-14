@@ -39,7 +39,7 @@ defmodule EvehicleSim.Runtime.Workers.RadarServer do
   # server
   @impl true
   def init(radar_data) do
-    {:ok, radar_data |> Map.put(:start_data, nil) |> Map.put(:end_data, nil)}
+    {:ok, radar_data |> Map.put(:start_data, nil)}
   end
 
   @impl true
