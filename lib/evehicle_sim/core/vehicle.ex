@@ -2,6 +2,7 @@ defmodule EvehicleSim.Core.Vehicle do
   alias __MODULE__
   alias EvehicleSim.Core.FileReaders.CsvFileReader
   alias EvehicleSim.Core.VehicleDriveData
+  alias EvehicleSim.Core.RadarDriveData
   alias EvehicleSim.Core.GpsDistanceCalculator
   alias EvehicleSim.Runtime.Workers.VehicleIdAgent
   alias EvehicleSim.Runtime.Workers.RadarServer
@@ -40,9 +41,7 @@ defmodule EvehicleSim.Core.Vehicle do
       radar = get_closest_radar(radars, latitude, longitude, speed)
 
       if radar != nil do
-        row_for_radar =
-          {vehicle.id, row.milliseconds_since_epoch, row.gps_speed, latitude, longitude}
-
+        row_for_radar = RadarDriveData.new(vehicle.id, row)
         RadarServer.send_row(radar.name, row_for_radar)
       end
     end)

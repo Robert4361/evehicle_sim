@@ -12,7 +12,8 @@ defmodule EvehicleSim.Application do
       # {EvehicleSim.Worker, arg}
       {EvehicleSim.Runtime.Supervisors.RadarSupervisor, nil},
       {Registry, keys: :unique, name: EvehicleSim.RadarRegistry},
-      {EvehicleSim.Runtime.Workers.VehicleIdAgent, nil}
+      {EvehicleSim.Runtime.Workers.VehicleIdAgent, nil},
+      {EvehicleSim.Runtime.Workers.TicketServer, nil}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

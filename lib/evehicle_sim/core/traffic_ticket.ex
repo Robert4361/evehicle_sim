@@ -8,8 +8,7 @@ defmodule EvehicleSim.Core.TrafficTicket do
           speed: float(),
           gps_width: float(),
           gps_length: float(),
-          radar_gps_width: float(),
-          radar_gps_length: float()
+          radar_name: String.t()
         }
 
   defstruct [
@@ -19,11 +18,10 @@ defmodule EvehicleSim.Core.TrafficTicket do
     :speed,
     :gps_width,
     :gps_length,
-    :radar_gps_width,
-    :radar_gps_length
+    :radar_name
   ]
 
-  @spec new(integer(), integer(), integer, float(), float(), float(), float(), float()) :: t()
+  @spec new(integer(), integer(), integer, float(), float(), float(), String.t()) :: t()
   def new(
         vehicle_id,
         time_start,
@@ -31,8 +29,7 @@ defmodule EvehicleSim.Core.TrafficTicket do
         speed,
         gps_width,
         gps_length,
-        radar_gps_width,
-        radar_gps_length
+        radar_name
       ) do
     %TrafficTicket{
       vehicle_id: vehicle_id,
@@ -41,8 +38,7 @@ defmodule EvehicleSim.Core.TrafficTicket do
       speed: speed,
       gps_width: gps_width,
       gps_length: gps_length,
-      radar_gps_width: radar_gps_width,
-      radar_gps_length: radar_gps_length
+      radar_name: radar_name
     }
   end
 end
