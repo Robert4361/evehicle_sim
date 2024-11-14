@@ -9,6 +9,10 @@ defmodule EvehicleSim.Core.Simulator do
     RadarSupervisor.start_radar("radar4.txt")
   end
 
+  def start_radar_1() do
+    RadarSupervisor.start_radar("radar1.txt")
+  end
+
   def start_vehicle() do
     vehicle = Vehicle.new("vehicle1.csv")
     Vehicle.start_drive(vehicle)
